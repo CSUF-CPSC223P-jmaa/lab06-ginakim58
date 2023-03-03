@@ -64,13 +64,13 @@ def end(s):
 def planet(mass):
     """Construct a planet of some mass."""
     assert mass > 0
-    "*** YOUR CODE HERE ***"
+    return ['planet', mass]
 
 
 def mass(w):
     """Select the mass of a planet."""
     assert is_planet(w), 'must call mass on a planet'
-    "*** YOUR CODE HERE ***"
+    return w[1]
 
 
 def is_planet(w):
@@ -127,6 +127,15 @@ def balanced(m):
     True
     """
     "*** YOUR CODE HERE ***"
+    if is_planet(m):
+        return True
+    
+    arm1 = left(m)
+    arm2 = right(m)
+
+    l_arm = length(arm1) * total_weight(end(arm1))
+    r_arm = length(arm2) * total_weight(end(arm2))
+    return balanced(end(arm1)) and balanced(end(arm2)) and l_arm == r_arm
 
 
 def totals_tree(m):
