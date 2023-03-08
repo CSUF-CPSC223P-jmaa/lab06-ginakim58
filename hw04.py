@@ -168,6 +168,11 @@ def totals_tree(m):
     True
     """
     "*** YOUR CODE HERE ***"
+    if is_planet(m):
+        return tree(m)
+    left_arm = left(m)
+    right_arm = right(m)
+    return tree(total_weight(m), [totals_tree(end(left_arm)), totals_tree(end(right_arm))])
 
 
 def replace_loki_at_leaf(t, lokis_replacement):
